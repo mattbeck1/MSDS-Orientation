@@ -1,0 +1,20 @@
+---
+title: "Project Euler Problem 1"
+author: "Matthew Beck"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r}
+sequence <- seq(0,999,by=1)
+sum <- 0
+
+for (x in sequence){
+    if (x %% 3 == 0 | x %% 5 == 0){
+        sum = sum + x
+    }
+}
+
+print(sum)
+```
