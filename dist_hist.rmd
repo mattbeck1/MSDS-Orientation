@@ -7,19 +7,67 @@ output: html_document
 
 ```{r}
 library(ggplot2)
-binom_data <-  as.data.frame(rbinom(n=10, size=10, prob=0.5))
+binom_data <-  as.data.frame(rbinom(n=100, size=1000, prob=0.5))
 names(binom_data) <- c('data')
 
-binom_data %>% ggplot() + 
-  geom_histogram(aes(x = data, 
-                     y = stat(count / sum(count))), 
-                     color = 'black') +
-  geom_vline(xintercept = 30, 
-             size = 1, 
-             linetype = 'dashed',
-             color = 'red') +
-  theme_bw() +
-  labs(x = 'Number of successes in 100 trials',
-       y = 'Proportion',
-       title = '1000 samples of b(100, 0.3)')
+ggplot(binom_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
 ```
+
+```{r}
+normal_data <- as.data.frame(rnorm(n=1000, mean=5, sd=1))
+names(normal_data) <- c('data')
+
+ggplot(normal_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+```{r}
+uniform_data <- as.data.frame(runif(1000, 0, 1))
+names(uniform_data) <- c('data')
+
+ggplot(uniform_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+# Demonstration of the Law of Large Numbers
+
+### Binomial Distribution N = 10
+```{r}
+binom_10_data <- as.data.frame(rbinom(10, 100, 0.5))
+names(binom_10_data) <- c('data')
+
+ggplot(binom_10_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+### Binomial Distribution N = 100
+```{r}
+binom_100_data <- as.data.frame(rbinom(100, 100, 0.5))
+names(binom_100_data) <- c('data')
+
+ggplot(binom_100_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+### Binomial Distribution N = 1000
+```{r}
+binom_1000_data <- as.data.frame(rbinom(1000, 100, 0.5))
+names(binom_1000_data) <- c('data')
+
+ggplot(binom_1000_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+### Binomial Distribution N = 10000
+```{r}
+binom_10000_data <- as.data.frame(rbinom(10000, 100, 0.5))
+names(binom_10000_data) <- c('data')
+
+ggplot(binom_10000_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+### Binomial Distribution N = 100000
+```{r}
+binom_100000_data <- as.data.frame(rbinom(100000, 100, 0.5))
+names(binom_100000_data) <- c('data')
+
+ggplot(binom_100000_data, aes(x=data)) + geom_histogram(color="blue", fill="lightblue", bins=30)
+```
+
+### Analysis
+As it can be seen from the above graphs, as N increases, the bell curve becomes more defined representing the normal distribution.

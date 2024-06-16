@@ -7,7 +7,7 @@ output: html_document
 
 ```{r}
 library(primes)
-factors <- unlist(prime_factors(as.numeric(600851475143)))
+factors <- unlist(primeFactors(600851475143))
 factors
 max(factors)
 ```
