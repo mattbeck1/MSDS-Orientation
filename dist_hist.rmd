@@ -1,0 +1,25 @@
+---
+title: "Distribution Histograms"
+author: "Matthew Beck"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+binom_data <-  as.data.frame(rbinom(n=10, size=10, prob=0.5))
+names(binom_data) <- c('data')
+
+binom_data %>% ggplot() + 
+  geom_histogram(aes(x = data, 
+                     y = stat(count / sum(count))), 
+                     color = 'black') +
+  geom_vline(xintercept = 30, 
+             size = 1, 
+             linetype = 'dashed',
+             color = 'red') +
+  theme_bw() +
+  labs(x = 'Number of successes in 100 trials',
+       y = 'Proportion',
+       title = '1000 samples of b(100, 0.3)')
+```

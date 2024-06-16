@@ -1,0 +1,13 @@
+---
+title: "Project Euler Problem 3"
+author: "Matthew Beck"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(primes)
+factors <- unlist(prime_factors(as.numeric(600851475143)))
+factors
+max(factors)
+```
